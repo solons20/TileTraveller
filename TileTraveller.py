@@ -42,6 +42,6 @@ def wrongmove(str):
         
 
 print("You can travel:", moveallowed(posstartx, posstarty))
-direct = input("Direction: prufa ")
+direct = input("Direction: prufa")
 
 
