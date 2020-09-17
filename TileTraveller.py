@@ -1,47 +1,101 @@
-posstartx = 1
-posstarty = 1
-up = 1
-right = 1
-down = -1
-left = -1
-
-def moveallowed(x, y):
-    if ((x == 1) and (y == 1)):
-        print("N)orth.")
-    elif ((x == 1) and (y == 2)):
-        print("(N)orth or (E)ast or (S)outh.")
-    elif ((x == 1) and (y == 3)):
-        print("(E)ast or (S)outh.")
-    elif ((x == 2) and (y == 3)):
-        print("(E)ast or (W)est.")
-    elif ((x == 2) and (y == 2)):
-        print("(S)outh or (W)est.")
-    elif ((x == 2) and (y == 1)):
-        print("(N)orth.")
-    elif ((x == 3) and (y == 3)):
-        print("(S)outh or (W)est.")
-    elif ((x == 3) and (y == 2)):
-        print("(N)orth or (S)outh.")
-    elif ((x == 3) and (y == 1)):
-        print("Victory!")
+def tile_1_1():
+#getur farið N.
+    print("You can travel: (N)orth.")
+    direction = input("Direction: ")
+    if direction == "n" or direction == "N":
+        tile_1_2()
+    else:
+        print("Not a valid direction!")
+        tile_1_1()
     
-    
-
-def movemade(str):
-    if (str == "n" or str == "N"):
-        up += 1
-    elif (str == "e" or str == "E"):
-        right += 1
-    elif (str == "s" or str == "S"):
-        down -= 1
-    elif (str == "w" or str == "W"):
-        left -= 1
+def tile_1_2():
+# getur farið S, E, N.
+    print("You can travel: (N)orth or (E)ast or (S)outh.")
+    direction = input("Direction: ")
+    if direction == "n" or direction == "N":
+        tile_1_3()
+    elif direction == "e" or direction == "E":
+        tile_2_2()
+    elif direction == "s" or direction == "S":
+        tile_1_1()
+    else:
+        print("Not a valid direction!")
+        tile_1_2()
         
-def wrongmove(str):
-    if((direct != "n") and (direct != "N") and (direct != "s") and (direct != "S") and (direct != "w") and (direct != "W") and (direct != "e") and (direct != "E"))
-        
+def tile_1_3():
+# getur farið S, E.
+    print("You can travel: (E)ast or (S)outh.")
+    direction = input("Direction: ")
+    if direction == "e" or direction == "E":
+        tile_2_3()
+    elif direction == "s" or direction == "S":
+        tile_1_2()
+    else:
+        print("Not a valid direction!")
+        tile_1_3()
 
-print("You can travel:", moveallowed(posstartx, posstarty))
-direct = input("Direction: prufa")
+def tile_2_1():
+# getur farið N.
+    print("You can travel: (N)orth.")
+    direction = input("Direction: ")
+    if direction == "n" or direction == "N":
+        tile_2_2()
+    else:
+        print("Not a valid direction!")
+        tile_2_1()
 
+def tile_2_2():
+# getur farið W, S.
+    print("You can travel: (S)outh or (W)est.")
+    direction = input("Direction: ")
+    if direction == "w" or direction == "W":
+        tile_1_2()
+    elif direction == "s" or direction == "S":
+        tile_2_1()
+    else:
+        print("Not a valid direction!")
+        tile_2_2()
 
+def tile_2_3():
+# getur farið W, E.
+    print("You can travel: (E)ast or (W)est.")
+    direction = input("Direction: ")
+    if direction == "w" or direction == "W":
+        tile_1_3()
+    elif direction == "e" or direction == "E":
+        tile_3_3()
+    else:
+        print("Not a valid direction!")
+        tile_2_3()
+
+def tile_3_1():
+# Victory.
+    print("Victory!")
+
+def tile_3_2():
+# getur farið S, N.
+    print("You can travel: (N)orth or (S)outh.")
+    direction = input("Direction: ")
+    if direction == "n" or direction == "N":
+        tile_3_3()
+    elif direction == "s" or direction == "S":
+        tile_3_1()
+    else:
+        print("Not a valid direction!")
+        tile_3_2()
+
+def tile_3_3():
+# getur farið W, S.
+    print("You can travel: (S)outh or (W)est.")
+    direction = input("Direction: ")
+    if direction == "w" or direction == "W":
+        tile_2_3()
+    elif direction == "s" or direction == "S":
+        tile_3_2()
+    else:
+        print("Not a valid direction!")
+        tile_3_3()
+
+tile_1_1()
+
+#https://github.com/solons20/TileTraveller.git
